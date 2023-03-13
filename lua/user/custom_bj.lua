@@ -23,8 +23,10 @@ M.config = function()
     -- HACK: lualine hijacks the statusline, so we need to set it back to what we want
     vim.cmd [[ autocmd WinEnter,BufEnter,VimResized * setlocal laststatus=0 ]]
   end
-  lvim.builtin.custom_web_devicons = true
-  lvim.use_icons = false -- only set to false if you know what are you doing
+  
+  lvim.builtin.custom_web_devicons = false -- use nvim-web-devicons, not custom
+  lvim.use_icons = true -- use devicons
+
   lvim.builtin.sell_your_soul_to_devil = { active = false, prada = false }
   lvim.lsp.document_highlight = false
   lvim.builtin.task_runner = "async_tasks"

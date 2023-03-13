@@ -146,7 +146,14 @@ lvim.plugins = {
 - [Neovim](neovim-install) >= v0.8.0
 
 ```shell
-  brew install neovim --nightly
+brew install neovim --HEAD
+```
+- or nightly version
+
+```shell
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+tar xzf nvim-macos.tar.gz
+./nvim-macos/bin/nvim
 ```
 
 - [Rust](rust-install)
