@@ -23,7 +23,7 @@ M.config = function()
     -- HACK: lualine hijacks the statusline, so we need to set it back to what we want
     vim.cmd [[ autocmd WinEnter,BufEnter,VimResized * setlocal laststatus=0 ]]
   end
-  
+
   lvim.builtin.custom_web_devicons = false -- use nvim-web-devicons, not custom
   lvim.use_icons = true -- use devicons
 
@@ -57,11 +57,14 @@ M.config = function()
   lvim.reload_config_on_save = false -- NOTE: i don't like this
   lvim.builtin.mind.active = true
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
+  lvim.builtin.cheat = { active = true } -- enable/disable cheat.sh integration
+  lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
+  lvim.lsp.installer.setup.automatic_installation = false
 
   local continue = function() -- load vscode configuration on debug continue
     if vim.fn.filereadable('.vscode/launch.json') then
       require('dap.ext.vscode').load_launchjs()
-    end  
+    end
     require('dap').continue()
   end
   lvim.lsp.buffer_mappings.normal_mode["<leader>dc"] = { continue, "Start/Continue debug" }
