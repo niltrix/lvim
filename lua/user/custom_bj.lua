@@ -30,9 +30,9 @@ M.config = function()
   lvim.builtin.sell_your_soul_to_devil = { active = false, prada = false }
   lvim.lsp.document_highlight = false
   lvim.builtin.task_runner = "async_tasks"
-  lvim.builtin.dap.active = false
+  lvim.builtin.dap.active = true
   vim.g.instant_username = vim.env.USER
-  lvim.builtin.global_statusline = true
+  lvim.builtin.global_statusline = false
   lvim.builtin.dressing.active = true
   lvim.builtin.fancy_wild_menu.active = true
   lvim.builtin.refactoring.active = true
@@ -57,6 +57,14 @@ M.config = function()
   lvim.reload_config_on_save = false -- NOTE: i don't like this
   lvim.builtin.mind.active = true
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
+
+  local continue = function() -- load vscode configuration on debug continue
+    if vim.fn.filereadable('.vscode/launch.json') then
+      require('dap.ext.vscode').load_launchjs()
+    end  
+    require('dap').continue()
+  end
+  lvim.lsp.buffer_mappings.normal_mode["<leader>dc"] = { continue, "Start/Continue debug" }
 end
 
 return M
