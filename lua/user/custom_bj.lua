@@ -2,7 +2,7 @@ local M = {}
 
 M.config = function()
 
-  vim.opt.relativenumber = false -- WARNING : slower line key repeat rate on enable
+  -- vim.opt.relativenumber = false -- WARNING : slower line key repeat rate on enable
   lvim.colorscheme = "catppuccin" -- set to a custom theme
   lvim.builtin.time_based_themes = false -- set false to use your own configured theme
 
@@ -15,7 +15,7 @@ M.config = function()
 
   lvim.builtin.lsp_lines = true
   vim.diagnostic.config { virtual_lines = false } -- i only want to use it explicitly ( by calling the toggle function)
-  lvim.builtin.tmux_lualine = true
+  lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
     vim.opt.cmdheight = 0
     vim.opt.laststatus = 0
@@ -25,7 +25,7 @@ M.config = function()
   end
 
   lvim.builtin.custom_web_devicons = false -- use nvim-web-devicons, not custom
-  lvim.use_icons = true -- use devicons
+  lvim.use_icons = true -- ERROR use devicons
 
   lvim.builtin.sell_your_soul_to_devil = { active = false, prada = false }
   lvim.lsp.document_highlight = false
@@ -43,13 +43,13 @@ M.config = function()
     timeout = 2000,
     filter = require("lvim.lsp.utils").format_filter,
   }
-  lvim.builtin.smooth_scroll = "cinnamon"
+  lvim.builtin.smooth_scroll = ""
   lvim.builtin.tree_provider = "neo-tree"
   lvim.builtin.noice.active = true
-  lvim.builtin.go_programming.active = false
-  lvim.builtin.python_programming.active = false
-  lvim.builtin.web_programming.active = false
-  lvim.builtin.rust_programming.active = false
+  lvim.builtin.go_programming.active = true
+  lvim.builtin.python_programming.active = true
+  lvim.builtin.web_programming.active = true
+  lvim.builtin.rust_programming.active = true
   lvim.builtin.cpp_programming.active = false
   lvim.builtin.borderless_cmp = true
   lvim.builtin.colored_args = true
@@ -58,8 +58,7 @@ M.config = function()
   lvim.builtin.mind.active = true
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
   lvim.builtin.cheat = { active = true } -- enable/disable cheat.sh integration
-  lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
-  lvim.lsp.installer.setup.automatic_installation = false
+  lvim.lsp.diagnostics.virtual_text = true -- remove this line if you want to see inline errors
 
   local continue = function() -- load vscode configuration on debug continue
     if vim.fn.filereadable('.vscode/launch.json') then

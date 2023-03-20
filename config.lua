@@ -147,6 +147,17 @@ require("user.null_ls").config()
 -- =========================================
 require("user.plugins").config()
 
+local additional_plugins = {
+  {
+    "fatih/vim-go",
+    build = ":GoUpdateBinaries",
+    ft = { "go", "gomod" },
+    event = { "BufRead", "BufNew" },
+    enabled = lvim.builtin.go_programming.active,
+  },
+}
+vim.list_extend(lvim.plugins, additional_plugins)
+
 -- Autocommands
 -- =========================================
 require("user.autocommands").config()
